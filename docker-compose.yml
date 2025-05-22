@@ -1,0 +1,14 @@
+version: '3.8'
+
+#Case to more complex setup
+
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - ENV_VAR=value
+    volumes:
+      - .:/app
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
