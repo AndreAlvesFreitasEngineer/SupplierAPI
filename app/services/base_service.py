@@ -24,7 +24,7 @@ class BaseService(Generic[ModelType]):
             )
             logger.info(f"Retrieved {len(items)} items (total: {total})")
         except Exception as e:
-            logger.exception("Failed to fetch paginated data: %s", e)
+            logger.exception("Failed to fetch paginated data", exc_info=e)
             raise
 
         if self._response_schema and items:

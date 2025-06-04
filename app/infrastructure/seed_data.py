@@ -113,11 +113,6 @@ async def insert_initial_data(session: AsyncSession):
 
     await session.commit()
 
-    # Prevent duplicate seeding
-    result = await session.execute(select(Client).limit(1))
-    if result.scalars().first():
-        return
-
     # CLIENT
     client = Client(
         company_name="Acme Corp",

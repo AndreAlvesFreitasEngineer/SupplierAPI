@@ -62,13 +62,13 @@ class VesselUpdate(BaseSchema):
     max_speed: Optional[float] = Field(None, gt=0)
     current_location: Optional[str] = Field(None, min_length=1, max_length=50)
 
-    @classmethod
+    @model_validator(mode="before")
     def check_not_empty(cls, data: dict) -> dict:
         if not any(data.values()):
             raise ValueError("At least one field must be updated")
         return data
 
-    @classmethod
+    @field_validator("status")
     def validate_status(cls, v: Optional[str]) -> Optional[str]:
         if v is None:
             return v

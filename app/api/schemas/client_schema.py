@@ -2,7 +2,6 @@ import re
 from typing import Optional, List
 
 from pydantic import EmailStr, Field, model_validator, constr, field_validator
-from pydantic import validator
 
 from app.api.schemas.base_schema import (
     BaseSchema,
